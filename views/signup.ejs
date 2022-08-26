@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <form action="" method="POST">
+    <label for="first_name">First Name</label>
+    <input name="first_name" placeholder="First Name" type="text" value="a" />
+    <label for="last_name">Last Name</label>
+    <input name="last_name" placeholder="Last Name" type="text" value="a" />
+    <label for="username">Email</label>
+    <input name="username" placeholder="Email" type="text" value="a" />
+    <label for="password">Password</label>
+    <input name="password" type="password"  value="a"/>
+    <label for="passwordConfirmation">Password</label>
+    <input name="passwordConfirmation" type="password"  value="a"/>
+    <button type="submit">Sign Up</button>
+  </form>
+  <% if(typeof errors !== 'undefined') { %>
+    <% errors.forEach(error => { %>
+        <h2><%= error.msg %></h2>
+    <% }) %>
+  <% } %>
+</body>
+</html>
