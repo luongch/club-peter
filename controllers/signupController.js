@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const User = require('../models/users')
+const User = require('../models/user')
 const { body,check, validationResult } = require("express-validator");
 
 exports.user_create_get = (req,res,next) => {
