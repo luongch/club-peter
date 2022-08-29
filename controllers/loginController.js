@@ -30,9 +30,24 @@ exports.user_login_post = [
             return;
         }
         
-        passport.authenticate("local", {
+        /**
+         *passport.authenticate returns a function directly and that function 
+         * takes in req,res, by calling (req,res,next) right after we are passing
+         * in those parameters to the returned function
+         * It is equivalent to the follwing commented out code
+         */
+        // let test = passport.authenticate("local", {
+        //     successRedirect: "/",
+        //     failureRedirect: "/login"
+        // })
+
+        // return test(req,res,next)
+        
+         passport.authenticate("local", {
             successRedirect: "/",
             failureRedirect: "/login"
         })(req,res,next)
+
+        
     }    
 ]
