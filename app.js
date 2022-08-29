@@ -34,7 +34,7 @@ app.set('view engine', 'ejs');
 
 passport.use(
   new LocalStrategy((username, password, done) => {
-    console.log("trying to find one")
+
     User.findOne({ username: username }, (err, user) => {
       if (err) { 
         return done(err);
