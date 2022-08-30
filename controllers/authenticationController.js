@@ -47,7 +47,12 @@ exports.user_login_post = [
             successRedirect: "/",
             failureRedirect: "/login"
         })(req,res,next)
-
-        
     }    
 ]
+
+exports.user_logout_post = function(req,res,next) {
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
+}
