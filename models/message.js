@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const MessageSchema = new Schema(
     {
         title: {type: String, required: true},
-        text: {type: String, required: true},
-        message: {type: String, required: true}
+        message: {type: String, required: true},
+        dateCreated: {type: Date, required: true}
     }
 );
 

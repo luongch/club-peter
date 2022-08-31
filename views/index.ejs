@@ -21,5 +21,15 @@
     <% } %>
     <a href="/signup">Sign up</a>
     <a href="/auth/login">Login</a>
+
+    <% if(typeof messages !== 'undefined') { %>
+    <div>
+      <% messages.forEach(message => { %>
+        <h2><%= message.title %></h2>
+        <h3><%= message.text %></h3>
+        <p><%= message.dateCreated %></p>
+      <% }) %>
+    </div>
+    <% } %>
   </body>
 </html>
