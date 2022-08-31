@@ -9,6 +9,11 @@
     <p>Welcome to <%= title %></p>
     <% if (user) {%>
       <h1>WELCOME BACK <%= user.username %></h1>
+
+      <% if(user.isMember) { %>
+        <h2>You are a follower of Peter</h2>
+      <% } %>
+      
       <form id="logout" action="/auth/logout" method="POST">
         <a href="#" onclick="document.getElementById('logout').submit()">Logout</a>
       </form>
