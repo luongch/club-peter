@@ -23,11 +23,22 @@
     <a href="/auth/login">Login</a>
 
     <% if(typeof messages !== 'undefined') { %>
-    <div>
+    <div class="message_container">
       <% messages.forEach(message => { %>
-        <h2><%= message.title %></h2>
-        <h3><%= message.text %></h3>
-        <p><%= message.dateCreated %></p>
+        <div class="message">
+          <h2><%= message.title %></h2>
+          <h3><%- message.message %></h3>
+          <% if(user && user.isMember) { %>
+            <p><%= message.author.first_name %></p>
+          <% } %>
+          
+          <% if(user && user.isAdmin) { %>
+            <form id="delete" action="/message/delete" method="POST">
+              <input type="hidden" name="message_id" value="<%= message._id %>" >
+              <button type="submit">Delete</button>
+            </form>
+          <% } %>
+        </div>
       <% }) %>
     </div>
     <% } %>

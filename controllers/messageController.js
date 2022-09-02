@@ -6,8 +6,14 @@ exports.message_get = (req,res,next) => {
     res.render("message",{})
 }
 
-exports.get_all_messages = (req,res,next) => {
-
+exports.message_delete = (req,res,next) => {
+    console.log(req.body)
+    Message.findByIdAndRemove(req.body.message_id, (err) =>{
+        if(err) {
+            return next(err)
+        }
+        res.redirect('/')
+    });
 }
 
 exports.message_post = [
@@ -24,19 +30,18 @@ exports.message_post = [
     ,
     (req,res,next) => {
         const errors = validationResult(req)
-        console.log("errors", errors)
         if(!errors.isEmpty()) {
             res.render("message", {
                 message:req.body,
                 errors:errors.array()
             })
         }
-
-        console.log(req.body)
+        
         const message = new Message(
             {
                 title: req.body.title,
                 message: req.body.message,
+                author: req.user,
                 dateCreated: Date.now()
             }
         )
